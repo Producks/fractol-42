@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 14:38:08 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/17 18:08:04 by ddemers          ###   ########.fr       */
+/*   Updated: 2022/12/19 02:19:24 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,5 @@ typedef struct s_fractal
 	t_complex			min;
 	t_complex			max;
 } t_fractal;
-
-void			ft_update_image(mlx_image_t	*img, t_fractal *config);
-unsigned int	ft_mandelbrot_math(t_complex constant, unsigned int iteration);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 14:45:21 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/17 18:08:10 by ddemers          ###   ########.fr       */
+/*   Updated: 2022/12/19 02:19:49 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 #include <stdio.h>
 #include "../include/fractol.h"
 #include "../include/complex.h"
+#include "../include/calculus.h"
 
-void	ft_init_fractal_config(t_fractal *config)
+static void	ft_init_fractal_config(t_fractal *config)
 {
-	config->iteration = 500.0;
+	config->iteration = 50.0;
 	config->min = ft_complex_contructor(-2.0, -2.0);
 	config->max = ft_complex_contructor(2.0, 2.0);
 	config->palette = create_color_palette(NULL, config->iteration);
