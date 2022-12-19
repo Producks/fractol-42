@@ -34,21 +34,21 @@ t_color_palette  create_color_palette(const char *str, const int iteration)
     unsigned int    index;
 
     index = -1;
-    colors = ft_split(str, ';');
+    //colors = ft_split(str, ';');
     // if (!colors)
     //     ft_error(); // later
-    palette.color_qty = count_split_elements(colors);
-    palette.colors = (uint32_t *)malloc(iteration * sizeof(uint32_t));
+    //palette.color_qty = count_split_elements(colors);
+    palette.colors = (uint32_t *)malloc((iteration + 1) * sizeof(uint32_t));
     // if (!palette.colors)
     // {
     //     ft_free(); // later
     //     ft_error(); // later
     // }
-    while(++index < iteration)
+    while(++index <= iteration)
     {
         //colors[0] = #009B83
         //009B83FF
-        palette.colors[index] = ft_colors(index, 0);
+        palette.colors[index] = ft_colors2(index, iteration);
     }
     //ft_free_split(colors);
     return(palette);
@@ -65,40 +65,10 @@ uint32_t	get_rgba(int r, int g, int b, int a)
 	return (r << 24 | g << 16 | b << 8 | a);
 }
 
-uint32_t	ft_colors(int iteration, int palette)
+uint32_t ft_colors2(int iteration, unsigned int max_iteration)
 {
-	int			red;
-	int			green;
-	int			blue;
-	uint32_t	result;
-
-	if (palette == 0)
-	{
-		red = abs(iteration) * 25;
-		green = abs(iteration) * 25;
-		blue = abs(iteration) * 25;
-		result = get_rgba(red, green, blue, 0xFF);
-		return (result);
-	}
-	else if (palette == 1)
-	{
-		red = pow(iteration, 2);
-		green = pow(iteration, 2);
-		blue = pow(iteration, 2);
-		result = get_rgba(red, green, blue, 0xFF);
-		return (result);
-	}
-	else if (palette == 2)
-	{
-		red = iteration / 10;
-		green = iteration % 10;
-		blue = iteration * 10;
-		result = get_rgba(red, green, blue, 0xFF);
-		return (result);
-	}
-	result = get_rgba(0xFF, 0xFF, 0xFF, 0xFF);
-	return (result);
+	int gray_level = 255 * iteration / (max_iteration);
+	return get_rgba(gray_level, gray_level, gray_level, 0xFF);
 }
-
 
 //create_color_palette("#009B83;#CBDAA4;#DFE5B3;#F36859;#CCCCCC")

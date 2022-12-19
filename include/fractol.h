@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 14:38:08 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/19 02:19:24 by ddemers          ###   ########.fr       */
+/*   Updated: 2022/12/19 16:28:32 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,12 @@ typedef struct s_fractal
 	t_complex			min;
 	t_complex			max;
 } t_fractal;
+
+typedef struct s_param
+{
+	t_fractal	config;
+	mlx_t		*mlx;
+	mlx_image_t	*img;
+} t_param;
 
 #endif

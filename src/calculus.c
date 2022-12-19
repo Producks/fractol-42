@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 15:56:01 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/19 02:09:04 by ddemers          ###   ########.fr       */
+/*   Updated: 2022/12/19 17:51:42 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ unsigned int	ft_mandelbrot_math(t_complex constant, unsigned int iteration)
 	val = ft_complex_contructor(0.0, 0.0);
 	while (counter < iteration)
 	{
-		val = ft_power_complex(val, 2);
+		val = ft_multiplication_complex(val, val);
 		val = ft_addition_complex(val, constant);
 		if (pow(val.i, 2) + pow(val.r, 2) > 4.0)
 			break ;
