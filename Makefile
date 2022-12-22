@@ -28,6 +28,8 @@ SRC = 	./src/basic_math.c \
 		./src/calculus.c \
 		./src/color_palette.c \
 		./src/complex.c \
+		./src/color_algo.c \
+		./src/input.c \
 		./src/fractol.c
 # Colors #
 BLACK = \033[0;30m

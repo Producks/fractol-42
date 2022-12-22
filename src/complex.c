@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "../include/complex.h"
 #include "../include/fractol.h"
 
@@ -17,12 +18,12 @@ t_complex	real_to_complex(int x, int y, t_complex min, t_complex max)
 {
 	t_complex	res;
 
-	res.r = min.r + ((x * (max.r - min.r)) / WIDTH);
-	res.i = min.i + ((y * (max.i - min.i)) / HEIGHT);
+	res.r = min.r + ((x * (max.r - min.r)) / (double)WIDTH);
+	res.i = min.i + ((y * (max.i - min.i)) / (double)HEIGHT);
 	return (res);
 }
 
-t_complex   ft_complex_contructor(double x, double y)
+t_complex	ft_complex_contructor(double x, double y)
 {
 	t_complex	complex;
 

@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BASIC_MATH_H
-#define BASIC_MATH_H
+#ifndef  BASIC_MATH_H
+# define BASIC_MATH_H
 
 t_complex	ft_power_complex(t_complex a, int n);
 

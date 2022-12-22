@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calculus.h                                         :+:      :+:    :+:   */
+/*   input.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/19 02:10:18 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/19 02:10:18 by ddemers          ###   ########.fr       */
+/*   Created: 2022/12/20 08:18:20 by ddemers           #+#    #+#             */
+/*   Updated: 2022/12/20 08:18:20 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef  CALCULUS_H
-# define CALCULUS_H
+#ifndef  INPUT_H
+# define INPUT_H
 
-void	ft_update_image(mlx_image_t	*img, t_fractal *config);
+# define LEFT 0
+# define RIGHT 1
+# define UP 3
+# define DOWN 2
+
+void	move_camera(t_param *param, double distance, int direction);
+void	iteration_modifier(t_param *param, int i);
+void	zoom(t_param *param, double zoom_new_value);
 
 #endif

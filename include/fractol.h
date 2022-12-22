@@ -6,19 +6,19 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 14:38:08 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/19 16:28:32 by ddemers          ###   ########.fr       */
+/*   Updated: 2022/12/22 02:26:19 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_H
-#define FRACTOL_H
+#ifndef  FRACTOL_H
+# define FRACTOL_H
 
-#include "../libs/MLX42/MLX42.h"
-#include "../include/complex.h"
-#include "../include/color_palette.h"
+# include "../libs/MLX42/MLX42.h"
+# include "../include/complex.h"
+# include "../include/color_palette.h"
 
-#define WIDTH 1000
-#define HEIGHT 1000
+# define WIDTH 500
+# define HEIGHT 500
 
 typedef struct s_fractal
 {
@@ -26,13 +26,15 @@ typedef struct s_fractal
 	unsigned int		iteration;
 	t_complex			min;
 	t_complex			max;
-} t_fractal;
+	double				zoom_value;
+}	t_fractal;
 
 typedef struct s_param
 {
 	t_fractal	config;
 	mlx_t		*mlx;
 	mlx_image_t	*img;
-} t_param;
+	mlx_image_t	*iteration_counter;
+}	t_param;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 15:56:01 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/19 17:51:42 by ddemers          ###   ########.fr       */
+/*   Updated: 2022/12/22 02:52:30 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "../include/complex.h"
 #include "../include/basic_math.h"
 
+// f(z) = z² + c
 unsigned int	ft_mandelbrot_math(t_complex constant, unsigned int iteration)
 {
 	unsigned int	counter;
@@ -26,7 +27,7 @@ unsigned int	ft_mandelbrot_math(t_complex constant, unsigned int iteration)
 	{
 		val = ft_multiplication_complex(val, val);
 		val = ft_addition_complex(val, constant);
-		if (pow(val.i, 2) + pow(val.r, 2) > 4.0)
+		if (pow(val.i, 2) + pow(val.r, 2) > 2.0 * 2.0)
 			break ;
 		counter++;
 	}

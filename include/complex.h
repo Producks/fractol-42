@@ -11,9 +11,9 @@
 /* ************************************************************************** */
 
 #ifndef COMPLEX_H
-#define COMPLEX_H
+# define COMPLEX_H
 
-typedef	struct s_complex
+typedef struct s_complex
 {
 	double	i;
 	double	r;
