@@ -35,7 +35,7 @@ t_color_palette	create_color_palette(const char *str, const int iteration)
 	//     ft_error(); // later
 	// }
 	while (++index <= iteration)
-		palette.colors[index] = wave(index, iteration);
+		palette.colors[index] = rainbow(index, iteration);
 	return (palette);
 }
 

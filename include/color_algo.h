@@ -15,5 +15,6 @@
 
 uint32_t	grey_scale(int iteration, unsigned int max_iteration);
 uint32_t	wave(int iteration, unsigned int max_iteration);
+uint32_t	rainbow(int iteration, unsigned int max_iteration);
 
 #endif

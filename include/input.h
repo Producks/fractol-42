@@ -13,13 +13,13 @@
 #ifndef  INPUT_H
 # define INPUT_H
 
-# define LEFT 0
-# define RIGHT 1
-# define UP 3
-# define DOWN 2
+# define UP 0
+# define DOWN 1
+# define LEFT 2
+# define RIGHT 3
 
-void	move_camera(t_param *param, double distance, int direction);
+void	move_camera(t_param *param, double distance, char direction);
 void	iteration_modifier(t_param *param, int i);
-void	zoom(t_param *param, double zoom_new_value);
+void	zoom(t_param *param, double zoom_new_value, double x, double y);
 
 #endif

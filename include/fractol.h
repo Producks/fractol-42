@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 14:38:08 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/22 02:26:19 by ddemers          ###   ########.fr       */
+/*   Updated: 2022/12/23 04:55:16 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include "../include/complex.h"
 # include "../include/color_palette.h"
 
-# define WIDTH 500
-# define HEIGHT 500
+# define WIDTH 550
+# define HEIGHT 550
 
 typedef struct s_fractal
 {
@@ -27,6 +27,8 @@ typedef struct s_fractal
 	t_complex			min;
 	t_complex			max;
 	double				zoom_value;
+	t_complex			delta;
+	t_complex			julia;
 }	t_fractal;
 
 typedef struct s_param
@@ -35,6 +37,7 @@ typedef struct s_param
 	mlx_t		*mlx;
 	mlx_image_t	*img;
 	mlx_image_t	*iteration_counter;
+	int			flag;
 }	t_param;
 
 #endif
