@@ -13,6 +13,10 @@
 #ifndef  CALCULUS_H
 # define CALCULUS_H
 
-void	ft_update_image(mlx_image_t	*img, t_fractal *config);
+void			ft_update_image(t_param *param);
+unsigned int	ft_julia_math(t_complex constant,
+					t_fractal *config, unsigned int x, unsigned int y);
+unsigned int	ft_mandelbrot_math(t_complex constant,
+					t_fractal *config, unsigned int x, unsigned int y);
 
 #endif

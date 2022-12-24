@@ -21,6 +21,11 @@ uint32_t	get_rgba(int r, int g, int b, int a)
 	return (r << 24 | g << 16 | b << 8 | a);
 }
 
+// if (!palette.colors)
+// {
+//     ft_free(); // later
+//     ft_error(); // later
+// }
 t_color_palette	create_color_palette(const char *str, const int iteration)
 {
 	t_color_palette	palette;
@@ -29,11 +34,6 @@ t_color_palette	create_color_palette(const char *str, const int iteration)
 
 	index = -1;
 	palette.colors = (uint32_t *)malloc((iteration + 1) * sizeof(uint32_t));
-	// if (!palette.colors)
-	// {
-	//     ft_free(); // later
-	//     ft_error(); // later
-	// }
 	while (++index <= iteration)
 		palette.colors[index] = rainbow(index, iteration);
 	return (palette);

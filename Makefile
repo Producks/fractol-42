@@ -30,6 +30,8 @@ SRC = 	./src/basic_math.c \
 		./src/complex.c \
 		./src/color_algo.c \
 		./src/input.c \
+		./src/hooks.c \
+		./src/error.c \
 		./src/fractol.c
 # Colors #
 BLACK = \033[0;30m

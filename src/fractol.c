@@ -6,16 +6,19 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 14:45:21 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/23 05:13:01 by ddemers          ###   ########.fr       */
+/*   Updated: 2022/12/23 23:57:00 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
+#include "../include/hooks.h"
 #include "../include/fractol.h"
 #include "../include/complex.h"
 #include "../include/calculus.h"
 #include "../include/input.h"
+#include "../include/error.h"
 
 static void	ft_init_fractal_config(t_fractal *config)
 {
@@ -31,64 +34,18 @@ static void	ft_init_fractal_config(t_fractal *config)
 	config->julia.i = 0.0;
 }
 
-static void	loop_hook(void *params)
+static void	get_function(int argc, char **argv, t_param *params)
 {
-	t_param	*param;
-
-	param = params;
-	if (mlx_is_key_down(param->mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(param->mlx);
-	else if (mlx_is_key_down(param->mlx, MLX_KEY_UP))
-		move_camera(params, 0.1, 0b0);
-	else if (mlx_is_key_down(param->mlx, MLX_KEY_DOWN))
-		move_camera(params, 0.1, 0b1);
-	else if (mlx_is_key_down(param->mlx, MLX_KEY_LEFT))
-		move_camera(params, 0.1, 0b10);
-	else if (mlx_is_key_down(param->mlx, MLX_KEY_RIGHT))
-		move_camera(params, 0.1, 0b11);
-	else if (mlx_is_key_down(param->mlx, MLX_KEY_E))
-		iteration_modifier(params, -1);
-	else if (mlx_is_key_down(param->mlx, MLX_KEY_F))
-		iteration_modifier(params, 1);
-	else if (mlx_is_key_down(param->mlx, MLX_KEY_V))
-	{
-		param->flag = 0;
-		param->config.julia = real_to_complex(param->config.delta.r, param->config.delta.i, param->config.min, param->config.max);
-		ft_update_image(param->img, &param->config);
-		param->flag = 1;
-	}
-}
-
-static void	mouse_position(double xpos, double ypos, void *params)
-{
-	t_param	*param;
-
-	param = params;
-	param->config.delta.r = xpos;
-	param->config.delta.i = ypos;
-}
-
-static void	scroll_hook(double xdelta, double ydelta, void *params)
-{
-	t_param	*param;
-	static	bool flag = true;
-	double	xpos;
-
-	param = params;
-	if (flag)
-	{
-		if (ydelta > 0)
-		{
-			zoom(param, 1.1, param->config.delta.r, param->config.delta.i);
-		}
-		else if (ydelta < 0)
-			zoom(param, 0.9, param->config.delta.r, param->config.delta.i);
-		flag = false;
-	}
+	if (argc == 1)
+		arguments_error(0);
+	else if (argc > 2)
+		arguments_error(1);
+	else if (argv[1][0] == '0' && argv[1][1] == '\0')
+		params->function = &ft_mandelbrot_math;
+	else if (argv[1][0] == '1' && argv[1][1] == '\0')
+		params->function = &ft_julia_math;
 	else
-	{
-		flag = true;
-	}
+		arguments_error(2);
 }
 
 /*DEFINE coloring_function_qty = 3
@@ -103,11 +60,11 @@ int32_t	main(int argc, char **argv)
 {
 	t_param		param;
 
-	param.flag = 1;
+	get_function(argc, argv, &param);
 	param.mlx = mlx_init(WIDTH, HEIGHT, "test", true);
 	ft_init_fractal_config(&param.config);
 	param.img = mlx_new_image(param.mlx, WIDTH, HEIGHT);
-	ft_update_image(param.img, &param.config);
+	ft_update_image(&param);
 	mlx_image_to_window(param.mlx, param.img, 0, 0);
 	mlx_loop_hook(param.mlx, &loop_hook, &param);
 	mlx_scroll_hook(param.mlx, &scroll_hook, &param);

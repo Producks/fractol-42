@@ -43,19 +43,19 @@ void	move_camera(t_param *param, double distance, char direction)
 		param->config.max.r -= center.r * distance;
 		param->config.min.r -= center.r * distance;
 	}
-	ft_update_image(param->img, &param->config);
+	ft_update_image(param);
 }
 
 void	iteration_modifier(t_param *param, int i)
 {
-	param->config.iteration += 50;
+	param->config.iteration += 10;
 	if (param->config.iteration <= 1)
 		param->config.iteration = 1;
 	printf("%d\n", param->config.iteration);
 	free_color_palette(param->config.palette);
 	param->config.palette
 		= create_color_palette(NULL, param->config.iteration);
-	ft_update_image(param->img, &param->config);
+	ft_update_image(param);
 }
 
 void	zoom(t_param *param, double zoom_new_value, double x, double y)
@@ -71,5 +71,14 @@ void	zoom(t_param *param, double zoom_new_value, double x, double y)
 		/ zoom_new_value;
 	param->config.max.i = mouse.i + (param->config.max.i - mouse.i)
 		/ zoom_new_value;
-	ft_update_image(param->img, &param->config);
+	ft_update_image(param);
+}
+
+void	morbing_julia(t_param *param)
+{
+	param->flag = 0;
+	param->config.julia = real_to_complex(param->config.delta.r,
+			param->config.delta.i, param->config.min, param->config.max);
+	ft_update_image(param);
+	param->flag = 1;
 }

@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 14:38:08 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/23 04:55:16 by ddemers          ###   ########.fr       */
+/*   Updated: 2022/12/23 23:27:05 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,13 @@ typedef struct s_fractal
 
 typedef struct s_param
 {
-	t_fractal	config;
-	mlx_t		*mlx;
-	mlx_image_t	*img;
-	mlx_image_t	*iteration_counter;
-	int			flag;
+	t_fractal		config;
+	mlx_t			*mlx;
+	mlx_image_t		*img;
+	mlx_image_t		*iteration_counter;
+	int				flag;
+	unsigned int	(*function)(t_complex constant, t_fractal *config,
+			unsigned int x, unsigned int y);
 }	t_param;
 
 #endif

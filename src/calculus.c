@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 15:56:01 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/23 04:18:43 by ddemers          ###   ########.fr       */
+/*   Updated: 2022/12/23 23:30:20 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "../include/basic_math.h"
 
 // f(z) = z² + c
-static unsigned int	ft_mandelbrot_math(t_complex constant, t_fractal *config,
+unsigned int	ft_mandelbrot_math(t_complex constant, t_fractal *config,
 	unsigned int x, unsigned int y)
 {
 	unsigned int	counter;
@@ -37,7 +37,7 @@ static unsigned int	ft_mandelbrot_math(t_complex constant, t_fractal *config,
 }
 
 // f(z) = z² + c
-static unsigned int	ft_julia_math(t_complex constant, t_fractal *config,
+unsigned int	ft_julia_math(t_complex constant, t_fractal *config,
 	unsigned int x, unsigned int y)
 {
 	unsigned int	counter;
@@ -46,7 +46,6 @@ static unsigned int	ft_julia_math(t_complex constant, t_fractal *config,
 	counter = 0;
 	val = real_to_complex(x, y, config->min, config->max);
 	constant = ft_complex_contructor(config->julia.r, config->julia.i);
-	//constant = ft_complex_contructor(0.00, 0.00);
 	while (counter < config->iteration)
 	{
 		val = ft_multiplication_complex(val, val);
@@ -58,7 +57,7 @@ static unsigned int	ft_julia_math(t_complex constant, t_fractal *config,
 	return (counter);
 }
 
-void	ft_update_image(mlx_image_t	*img, t_fractal *config)
+void	ft_update_image(t_param *param)
 {
 	unsigned int	y;
 	unsigned int	x;
@@ -71,9 +70,11 @@ void	ft_update_image(mlx_image_t	*img, t_fractal *config)
 	{
 		while (++x < WIDTH)
 		{
-			constant = real_to_complex(x, y, config->min, config->max);
-			iteration = ft_julia_math(constant, config, x, y);
-			mlx_put_pixel(img, x, y, config->palette.colors[iteration]);
+			constant = real_to_complex(x, y,
+					param->config.min, param->config.max);
+			iteration = param->function(constant, &param->config, x, y);
+			mlx_put_pixel(param->img, x, y,
+				param->config.palette.colors[iteration]);
 		}
 		x = -1;
 	}
