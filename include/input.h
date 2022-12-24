@@ -22,5 +22,6 @@ void	move_camera(t_param *param, double distance, char direction);
 void	iteration_modifier(t_param *param, int i);
 void	zoom(t_param *param, double zoom_new_value, double x, double y);
 void	morbing_julia(t_param *param);
+void	color_swap(t_param *param);
 
 #endif

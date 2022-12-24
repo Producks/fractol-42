@@ -16,6 +16,7 @@
 #include "../include/fractol.h"
 #include "../include/calculus.h"
 #include "../include/input.h"
+#include "../include/color_palette.h"
 
 void	move_camera(t_param *param, double distance, char direction)
 {
@@ -53,8 +54,8 @@ void	iteration_modifier(t_param *param, int i)
 		param->config.iteration = 1;
 	printf("%d\n", param->config.iteration);
 	free_color_palette(param->config.palette);
-	param->config.palette
-		= create_color_palette(NULL, param->config.iteration);
+	param->config.palette = create_color_palette(param->config.iteration,
+			param->config.current_coloring);
 	ft_update_image(param);
 }
 
@@ -81,4 +82,13 @@ void	morbing_julia(t_param *param)
 			param->config.delta.i, param->config.min, param->config.max);
 	ft_update_image(param);
 	param->flag = 1;
+}
+
+void	color_swap(t_param *param)
+{
+	param->config.current_coloring = (param->config.current_coloring + 1) % 3;
+	free_color_palette(param->config.palette);
+	param->config.palette = create_color_palette(param->config.iteration,
+			param->config.current_coloring);
+	ft_update_image(param);
 }
