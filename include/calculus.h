@@ -18,5 +18,13 @@ unsigned int	ft_julia_math(t_complex constant,
 					t_fractal *config, unsigned int x, unsigned int y);
 unsigned int	ft_mandelbrot_math(t_complex constant,
 					t_fractal *config, unsigned int x, unsigned int y);
+unsigned int	ft_burningship_math(t_complex constant, t_fractal *config,
+					unsigned int x, unsigned int y);
+unsigned int	ft_tricorn_math(t_complex constant, t_fractal *config,
+					unsigned int x, unsigned int y);
+unsigned int	ft_phoenix_math(t_complex constant, t_fractal *config,
+					unsigned int x, unsigned int y);
+unsigned int	ft_newton_math(t_complex constant, t_fractal *config,
+					unsigned int x, unsigned int y);
 
 #endif

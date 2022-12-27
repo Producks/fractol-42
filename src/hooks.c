@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 23:32:15 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/24 03:54:10 by ddemers          ###   ########.fr       */
+/*   Updated: 2022/12/27 07:49:29 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	loop_hook(void *params)
 		iteration_modifier(params, -1);
 	else if (mlx_is_key_down(param->mlx, MLX_KEY_F))
 		iteration_modifier(params, 1);
-	else if (mlx_is_key_down(param->mlx, MLX_KEY_V))
+	else if (mlx_is_key_down(param->mlx, MLX_KEY_V) && param->morbing == true)
 		morbing_julia(params);
 	else if (mlx_is_key_down(param->mlx, MLX_KEY_Z))
 		color_swap(params);

@@ -25,11 +25,15 @@ uint32_t	get_rgba(int r, int g, int b, int a)
 void	*get_color_palette_function(int flag)
 {
 	if (flag == 0)
-		return (&rainbow);
+		return (&grey_scale);
 	else if (flag == 1)
 		return (&wave);
 	else if (flag == 2)
-		return (&grey_scale);
+		return (&rainbow);
+	else if (flag == 3)
+		return (&awesome);
+	else
+		return (&monochrome);
 }
 
 t_color_palette	create_color_palette(const int iteration, int flag)

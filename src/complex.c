@@ -41,7 +41,7 @@ t_complex	ft_addition_complex(t_complex a, t_complex b)
 	return (result);
 }
 
-t_complex	ft_substraction_complex(t_complex a, t_complex b)
+t_complex	ft_subtraction_complex(t_complex a, t_complex b)
 {
 	t_complex	result;
 

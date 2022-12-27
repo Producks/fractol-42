@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 14:45:21 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/24 15:49:37 by ddemers          ###   ########.fr       */
+/*   Updated: 2022/12/27 08:22:38 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,16 @@ static void	get_function(int argc, char **argv, t_param *params)
 	else if (argv[1][0] == '0' && argv[1][1] == '\0')
 		params->function = &ft_mandelbrot_math;
 	else if (argv[1][0] == '1' && argv[1][1] == '\0')
+	{
+		params->morbing = true;
 		params->function = &ft_julia_math;
+	}
+	else if (argv[1][0] == '2' && argv[1][1] == '\0')
+		params->function = &ft_burningship_math;
+	else if (argv[1][0] == '3' && argv[1][1] == '\0')
+		params->function = &ft_tricorn_math;
+	else if (argv[1][0] == '4' && argv[1][1] == '\0')
+		params->function = &ft_newton_math;
 	else
 		arguments_error(2);
 }
@@ -67,6 +76,6 @@ int32_t	main(int argc, char **argv)
 	mlx_loop(param.mlx);
 	mlx_terminate(param.mlx);
 	free_color_palette(param.config.palette);
-	puts("Bye");
+	puts("Bu Bye");
 	return (EXIT_SUCCESS);
 }

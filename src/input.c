@@ -77,16 +77,16 @@ void	zoom(t_param *param, double zoom_new_value, double x, double y)
 
 void	morbing_julia(t_param *param)
 {
-	param->flag = 0;
+	param->morbing = false;
 	param->config.julia = real_to_complex(param->config.delta.r,
 			param->config.delta.i, param->config.min, param->config.max);
 	ft_update_image(param);
-	param->flag = 1;
+	param->morbing = true;
 }
 
 void	color_swap(t_param *param)
 {
-	param->config.current_coloring = (param->config.current_coloring + 1) % 3;
+	param->config.current_coloring = (param->config.current_coloring + 1) % 5;
 	free_color_palette(param->config.palette);
 	param->config.palette = create_color_palette(param->config.iteration,
 			param->config.current_coloring);
