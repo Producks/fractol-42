@@ -24,14 +24,15 @@ LIBFT = libs/libft.a
 # OBJS #
 OBJS = ${SRC:.c=.o}
 # Source #
-SRC = 	./src/basic_math.c \
-		./src/calculus.c \
+SRC = 	./src/calculus.c \
 		./src/color_palette.c \
+		./src/complex_math.c \
 		./src/complex.c \
 		./src/color_algo.c \
 		./src/input.c \
 		./src/hooks.c \
 		./src/error.c \
+		./src/update_image.c \
 		./src/fractol.c
 # Colors #
 BLACK = \033[0;30m

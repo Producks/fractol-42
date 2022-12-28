@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   update_image.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/23 23:46:35 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/28 03:03:56 by ddemers          ###   ########.fr       */
+/*   Created: 2022/12/27 21:20:28 by ddemers           #+#    #+#             */
+/*   Updated: 2022/12/28 03:16:00 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef  ERROR_H
-# define ERROR_H
+#ifndef UPDATE_IMAGE_H
+# define UPDATE_IMAGE_H
 
-void	arguments_error(char flag);
-void	malloc_palette_error(void);
+typedef struct s_param	t_param;
+
+void	update_image(t_param *param);
 
 #endif

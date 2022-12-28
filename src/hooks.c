@@ -6,13 +6,14 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 23:32:15 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/27 07:49:29 by ddemers          ###   ########.fr       */
+/*   Updated: 2022/12/28 06:48:01 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
 #include "../include/input.h"
 
+/*Check for key presses*/
 void	loop_hook(void *params)
 {
 	t_param	*param;
@@ -32,12 +33,17 @@ void	loop_hook(void *params)
 		iteration_modifier(params, -1);
 	else if (mlx_is_key_down(param->mlx, MLX_KEY_F))
 		iteration_modifier(params, 1);
+	else if (mlx_is_key_down(param->mlx, MLX_KEY_Q))
+		iteration_modifier(params, 10);
+	else if (mlx_is_key_down(param->mlx, MLX_KEY_W))
+		iteration_modifier(params, -10);
 	else if (mlx_is_key_down(param->mlx, MLX_KEY_V) && param->morbing == true)
 		morbing_julia(params);
 	else if (mlx_is_key_down(param->mlx, MLX_KEY_Z))
 		color_swap(params);
 }
 
+/*Update mouse position in real time, this get called every frame*/
 void	mouse_position(double xpos, double ypos, void *params)
 {
 	t_param	*param;
@@ -47,6 +53,7 @@ void	mouse_position(double xpos, double ypos, void *params)
 	param->config.delta.i = ypos;
 }
 
+/*Check if scroll happened*/
 void	scroll_hook(double xdelta, double ydelta, void *params)
 {
 	t_param	*param;

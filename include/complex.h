@@ -20,9 +20,6 @@ typedef struct s_complex
 }	t_complex;
 
 t_complex	real_to_complex(int x, int y, t_complex min, t_complex max);
-t_complex	ft_complex_contructor(double x, double y);
-t_complex	ft_addition_complex(t_complex a, t_complex b);
-t_complex	ft_subtraction_complex(t_complex a, t_complex b);
-t_complex	ft_multiplication_complex(t_complex a, t_complex b);
+t_complex	complex_contructor(double x, double y);
 
 #endif

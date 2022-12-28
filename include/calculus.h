@@ -13,18 +13,17 @@
 #ifndef  CALCULUS_H
 # define CALCULUS_H
 
-void			ft_update_image(t_param *param);
-unsigned int	ft_julia_math(t_complex constant,
+unsigned int	julia_math(t_complex constant,
 					t_fractal *config, unsigned int x, unsigned int y);
-unsigned int	ft_mandelbrot_math(t_complex constant,
+unsigned int	mandelbrot_math(t_complex constant,
 					t_fractal *config, unsigned int x, unsigned int y);
-unsigned int	ft_burningship_math(t_complex constant, t_fractal *config,
+unsigned int	burningship_math(t_complex constant, t_fractal *config,
 					unsigned int x, unsigned int y);
-unsigned int	ft_tricorn_math(t_complex constant, t_fractal *config,
+unsigned int	tricorn_math(t_complex constant, t_fractal *config,
 					unsigned int x, unsigned int y);
-unsigned int	ft_phoenix_math(t_complex constant, t_fractal *config,
+unsigned int	phoenix_math(t_complex constant, t_fractal *config,
 					unsigned int x, unsigned int y);
-unsigned int	ft_newton_math(t_complex constant, t_fractal *config,
+unsigned int	newton_math(t_complex constant, t_fractal *config,
 					unsigned int x, unsigned int y);
 
 #endif

@@ -14,10 +14,11 @@
 #include <stdio.h>
 #include "../libs/Libft/libft.h"
 #include "../include/fractol.h"
-#include "../include/calculus.h"
+#include "../include/update_image.h"
 #include "../include/input.h"
 #include "../include/color_palette.h"
 
+/*Responsible to move the camera around with the arrow keys*/
 void	move_camera(t_param *param, double distance, char direction)
 {
 	t_complex	center;
@@ -44,21 +45,23 @@ void	move_camera(t_param *param, double distance, char direction)
 		param->config.max.r -= center.r * distance;
 		param->config.min.r -= center.r * distance;
 	}
-	ft_update_image(param);
+	update_image(param);
 }
 
+/*Responsible for changing the amount of iterations.*/
 void	iteration_modifier(t_param *param, int i)
 {
-	param->config.iteration += 10;
-	if (param->config.iteration <= 1)
+	param->config.iteration += i;
+	if (param->config.iteration < 1)
 		param->config.iteration = 1;
 	printf("%d\n", param->config.iteration);
 	free_color_palette(param->config.palette);
 	param->config.palette = create_color_palette(param->config.iteration,
 			param->config.current_coloring);
-	ft_update_image(param);
+	update_image(param);
 }
 
+/*Responsible for the zoom where the cursor is located at*/
 void	zoom(t_param *param, double zoom_new_value, double x, double y)
 {
 	t_complex	mouse;
@@ -72,23 +75,27 @@ void	zoom(t_param *param, double zoom_new_value, double x, double y)
 		/ zoom_new_value;
 	param->config.max.i = mouse.i + (param->config.max.i - mouse.i)
 		/ zoom_new_value;
-	ft_update_image(param);
+	update_image(param);
 }
 
+/*It's morbing time, responsible for changing the parameters in real time
+of the Julia fractal. Key need to be held down to call this function
+and it will change the fractal depending on the mouse position*/
 void	morbing_julia(t_param *param)
 {
 	param->morbing = false;
 	param->config.julia = real_to_complex(param->config.delta.r,
 			param->config.delta.i, param->config.min, param->config.max);
-	ft_update_image(param);
+	update_image(param);
 	param->morbing = true;
 }
 
+/*Responsible for changing the color palette*/
 void	color_swap(t_param *param)
 {
 	param->config.current_coloring = (param->config.current_coloring + 1) % 5;
 	free_color_palette(param->config.palette);
 	param->config.palette = create_color_palette(param->config.iteration,
 			param->config.current_coloring);
-	ft_update_image(param);
+	update_image(param);
 }
