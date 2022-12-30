@@ -6,12 +6,12 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 21:18:16 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/29 23:47:27 by ddemers          ###   ########.fr       */
+/*   Updated: 2022/12/30 06:09:44 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pthread.h>
-#include "../include/fractol.h"
+#include "../include/main.h"
 #include "../include/complex.h"
 
 void	*thread_function(void *arg)
@@ -35,8 +35,9 @@ void	*thread_function(void *arg)
 	return (NULL);
 }
 
-//1 thread par core
-// 100 4 25 thread
+/*Function responsible to update the image on screen, this use
+multithreading. A more optimal way to do this would be to
+create 1 thread per core to save run time.*/
 void	update_image(t_param *param)
 {
 	unsigned int	y;

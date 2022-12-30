@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.c                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 14:45:21 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/29 22:40:12 by ddemers          ###   ########.fr       */
+/*   Updated: 2022/12/30 06:10:41 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+#include "../include/main.h"
 #include "../include/hooks.h"
-#include "../include/fractol.h"
 #include "../include/complex.h"
 #include "../include/input.h"
-#include "../include/error.h"
+#include "../include/print_text.h"
 #include "../include/calculus.h"
 #include "../include/color_palette.h"
 #include "../include/update_image.h"
 
 /*Responsible for initializing values at the startup needed for later*/
-static void	ft_init_fractal_config(t_fractal *config)
+static void	init_fractal_config(t_fractal *config, t_param *param)
 {
 	config->iteration = 20.0;
 	config->max.r = 2.0;
@@ -35,14 +35,13 @@ static void	ft_init_fractal_config(t_fractal *config)
 	config->julia.r = 0.0;
 	config->julia.i = 0.0;
 	config->current_coloring = 0;
-	config->palette = create_color_palette(config->iteration, 0);
+	config->palette = create_color_palette(config->iteration, 0, param);
 }
 
 /*Responsible for getting the function for the fractal
 that will be getting displayed. Get stored in the struct for later*/
 static void	get_function(int argc, char **argv, t_param *params)
 {
-	params->move = 1;
 	if (argc == 1)
 		arguments_error(0);
 	else if (argc > 2)
@@ -64,26 +63,47 @@ static void	get_function(int argc, char **argv, t_param *params)
 		arguments_error(2);
 }
 
-int32_t	main(int argc, char **argv)
+/*Responsible for printing the filter used for one of the color
+palette, also check for errors.*/
+static void	filter_init(t_param *param)
+{
+	xpm_t	*xpm;
+	int32_t	error_check;
+
+	xpm = mlx_load_xpm42("./img/nebula.xpm42");
+	param->filter = mlx_texture_to_image(param->mlx, &xpm->texture);
+	mlx_delete_xpm42(xpm);
+	error_check = mlx_image_to_window(param->mlx, param->filter, 0, 0);
+	printf("%d\n", error_check);
+}
+
+/*Responsible for printing the fractal on screen,
+also check for errors.*/
+static void	fractal_init(t_param *param)
+{
+	int32_t	error_check;
+
+	param->img = mlx_new_image(param->mlx, WIDTH, HEIGHT);
+	if (!param->img)
+		failure(param, 1);
+	error_check = mlx_image_to_window(param->mlx, param->img, 0, 0);
+	printf("%d\n", error_check);
+	update_image(param);
+}
+
+int	main(int argc, char **argv)
 {
 	t_param		param;
 
 	get_function(argc, argv, &param);
-	param.mlx = mlx_init(WIDTH, HEIGHT, "🦆Fractol 42🦆", true);
-	ft_init_fractal_config(&param.config);
-	param.img = mlx_new_image(param.mlx, WIDTH, HEIGHT);
-	update_image(&param);
-	xpm_t* xpm = mlx_load_xpm42("./img/nebula.xpm42");
-	mlx_image_t* hud = mlx_texture_to_image(param.mlx, &xpm->texture);
-	mlx_image_to_window(param.mlx, hud, 0, 0);
-	mlx_image_to_window(param.mlx, param.img, 0, 0);
-	mlx_loop_hook(param.mlx, &loop_hook, &param);
-	mlx_loop_hook(param.mlx, &loop_hook2, &param);
-	mlx_scroll_hook(param.mlx, &scroll_hook, &param);
-	mlx_cursor_hook(param.mlx, &mouse_position, &param);
-	mlx_loop(param.mlx);
+	param.mlx = mlx_init(WIDTH, HEIGHT, "Fractol 42 ddemers42🦆", false);
+	if (!param.mlx)
+		failure(&param, 0);
+	init_fractal_config(&param.config, &param);
+	filter_init(&param);
+	fractal_init(&param);
+	loop(&param);
 	mlx_terminate(param.mlx);
 	free_color_palette(param.config.palette);
-	puts("Bu Bye");
-	return (EXIT_SUCCESS);
+	return (0);
 }

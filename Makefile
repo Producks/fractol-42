@@ -31,9 +31,9 @@ SRC = 	./src/calculus.c \
 		./src/color_algo.c \
 		./src/input.c \
 		./src/hooks.c \
-		./src/error.c \
+		./src/print_text.c \
 		./src/update_image.c \
-		./src/fractol.c
+		./src/main.c
 # Colors #
 BLACK = \033[0;30m
 RED = \033[0;31m

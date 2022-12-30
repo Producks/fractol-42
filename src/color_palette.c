@@ -10,15 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <math.h>
 #include <stdint.h>
 #include <stdlib.h>
 #include <limits.h>
-#include "../include/fractol.h"
+#include "../include/main.h"
 #include "../include/color_palette.h"
 #include "../include/color_algo.h"
 #include "../include/update_image.h"
-#include "../include/error.h"
+#include "../include/print_text.h"
 
 /*Convert int into the correct color value,
 taken from the MLX42 doc*/
@@ -46,7 +47,9 @@ This function pre compute every color palette in advance taking into
 account the max_iteration that is currently set and store all color values
 in the heap to save performance*/
 //#define malloc(...) NULL
-t_color_palette	create_color_palette(unsigned int iteration, int flag)
+//#define malloc(...) NULL
+t_color_palette	create_color_palette(unsigned int iteration,
+	int flag, t_param *param)
 {
 	t_color_palette	palette;
 	char			**colors;
@@ -55,7 +58,7 @@ t_color_palette	create_color_palette(unsigned int iteration, int flag)
 	index = -1;
 	palette.colors = (uint32_t *)malloc((iteration + 1) * sizeof(uint32_t));
 	if (!palette.colors)
-		malloc_palette_error();
+		malloc_palette_error(param);
 	palette.color_palette_func = get_color_palette_function(flag);
 	while (++index <= iteration)
 		palette.colors[index] = palette.color_palette_func(index, iteration);

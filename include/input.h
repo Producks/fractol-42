@@ -13,7 +13,8 @@
 #ifndef  INPUT_H
 # define INPUT_H
 
-void	move_camera(t_param *param, double xdelta, double ydelta, double zoom_level);
+void	move_camera(t_param *param, double xdelta, double ydelta,
+			double zoom_level);
 void	iteration_modifier(t_param *param, int i);
 void	zoom(t_param *param, double zoom_new_value, double x, double y);
 void	morbing_julia(t_param *param);

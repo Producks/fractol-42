@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 15:56:01 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/28 03:24:17 by ddemers          ###   ########.fr       */
+/*   Updated: 2022/12/30 06:09:13 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <complex.h>
-#include "../include/fractol.h"
+#include "../include/main.h"
 #include "../include/complex.h"
 #include "../include/complex_math.h"
 

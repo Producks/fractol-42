@@ -13,6 +13,9 @@
 #ifndef COLOR_PALETTE_H
 # define COLOR_PALETTE_H
 
+typedef struct s_param	t_param;
+//#include "fractol.h"
+
 //garbage ass norm forcing me to use an unsigned int here
 typedef struct s_color_palette
 {
@@ -22,7 +25,8 @@ typedef struct s_color_palette
 			unsigned int max_iteration);
 }	t_color_palette;
 
-t_color_palette		create_color_palette(unsigned int iteration, int flag);
+t_color_palette		create_color_palette(unsigned int iteration, int flag,
+						t_param *param);
 void				free_color_palette(t_color_palette palette);
 uint32_t			get_rgba(int r, int g, int b, int a);
 

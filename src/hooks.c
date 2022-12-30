@@ -6,14 +6,14 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 23:32:15 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/29 23:24:56 by ddemers          ###   ########.fr       */
+/*   Updated: 2022/12/30 06:11:03 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/fractol.h"
+#include <stdio.h>
+#include "../include/main.h"
 #include "../include/input.h"
-#include "../include/move_camera.h"
-#include "../include/error.h"
+#include "../include/print_text.h"
 
 void	loop_hook2(void *params)
 {
@@ -76,4 +76,13 @@ void	scroll_hook(double xdelta, double ydelta, void *params)
 		zoom(param, 1.1, param->config.delta.r, param->config.delta.i);
 	else if (ydelta < 0)
 		zoom(param, 0.9, param->config.delta.r, param->config.delta.i);
+}
+
+void	loop(t_param *param)
+{
+	mlx_loop_hook(param->mlx, &loop_hook, param);
+	mlx_loop_hook(param->mlx, &loop_hook2, param);
+	mlx_scroll_hook(param->mlx, &scroll_hook, param);
+	mlx_cursor_hook(param->mlx, &mouse_position, param);
+	mlx_loop(param->mlx);
 }

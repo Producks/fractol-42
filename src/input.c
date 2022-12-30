@@ -13,12 +13,13 @@
 #include <stddef.h>
 #include <stdio.h>
 #include "../libs/Libft/libft.h"
-#include "../include/fractol.h"
+#include "../include/main.h"
 #include "../include/update_image.h"
 #include "../include/input.h"
 #include "../include/color_palette.h"
 
-void	move_camera(t_param *param, double xdelta, double ydelta, double zoom_level)
+void	move_camera(t_param *param, double xdelta, double ydelta,
+	double zoom_level)
 {
 	param->config.max.i += ydelta * zoom_level;
 	param->config.min.i += ydelta * zoom_level;
@@ -36,7 +37,7 @@ void	iteration_modifier(t_param *param, int i)
 	printf("Iteration counter:%d\n", param->config.iteration);
 	free_color_palette(param->config.palette);
 	param->config.palette = create_color_palette(param->config.iteration,
-			param->config.current_coloring);
+			param->config.current_coloring, param);
 	update_image(param);
 }
 
@@ -55,7 +56,6 @@ void	zoom(t_param *param, double zoom_new_value, double x, double y)
 	param->config.max.i = mouse.i + (param->config.max.i - mouse.i)
 		/ zoom_new_value;
 	update_image(param);
-	printf("Min:%f Max%f\n", param->config.min.i, param->config.max.i);
 }
 
 /*It's morbing time, responsible for changing the parameters in real time
@@ -74,11 +74,12 @@ void	morbing_julia(t_param *param)
 void	color_swap(t_param *param, int flag)
 {
 	if (flag == 0)
-		param->config.current_coloring = (param->config.current_coloring + 1) % 4;
+		param->config.current_coloring = (param->config.current_coloring + 1)
+			% 4;
 	else
 		param->config.current_coloring = 69;
 	free_color_palette(param->config.palette);
 	param->config.palette = create_color_palette(param->config.iteration,
-			param->config.current_coloring);
+			param->config.current_coloring, param);
 	update_image(param);
 }

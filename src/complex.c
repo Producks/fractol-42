@@ -6,12 +6,12 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 14:41:49 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/28 03:14:52 by ddemers          ###   ########.fr       */
+/*   Updated: 2022/12/30 06:09:29 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "../include/fractol.h"
+#include "../include/main.h"
 #include "../include/complex.h"
 #include "../include/complex_math.h"
 
