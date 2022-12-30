@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 14:38:08 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/28 06:31:37 by ddemers          ###   ########.fr       */
+/*   Updated: 2022/12/29 19:07:20 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 typedef struct s_fractal
 {
 	t_color_palette		palette;
-	unsigned int		iteration;
+	int					iteration;
 	t_complex			min;
 	t_complex			max;
 	double				zoom_value;
@@ -37,10 +37,8 @@ typedef struct s_param
 	t_fractal		config;
 	mlx_t			*mlx;
 	mlx_image_t		*img;
-	mlx_image_t		*hud;
-	mlx_image_t		*iteration_counter;
 	int				morbing;
-	int				hud_flag;
+	int				move;
 	unsigned int	(*function)(t_complex constant, t_fractal *config,
 			unsigned int x, unsigned int y);
 	unsigned int	y;

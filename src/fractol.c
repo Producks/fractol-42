@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 14:45:21 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/28 07:14:14 by ddemers          ###   ########.fr       */
+/*   Updated: 2022/12/29 22:40:12 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static void	ft_init_fractal_config(t_fractal *config)
 that will be getting displayed. Get stored in the struct for later*/
 static void	get_function(int argc, char **argv, t_param *params)
 {
+	params->move = 1;
 	if (argc == 1)
 		arguments_error(0);
 	else if (argc > 2)
@@ -72,8 +73,12 @@ int32_t	main(int argc, char **argv)
 	ft_init_fractal_config(&param.config);
 	param.img = mlx_new_image(param.mlx, WIDTH, HEIGHT);
 	update_image(&param);
+	xpm_t* xpm = mlx_load_xpm42("./img/nebula.xpm42");
+	mlx_image_t* hud = mlx_texture_to_image(param.mlx, &xpm->texture);
+	mlx_image_to_window(param.mlx, hud, 0, 0);
 	mlx_image_to_window(param.mlx, param.img, 0, 0);
 	mlx_loop_hook(param.mlx, &loop_hook, &param);
+	mlx_loop_hook(param.mlx, &loop_hook2, &param);
 	mlx_scroll_hook(param.mlx, &scroll_hook, &param);
 	mlx_cursor_hook(param.mlx, &mouse_position, &param);
 	mlx_loop(param.mlx);

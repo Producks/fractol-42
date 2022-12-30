@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "random": "c",
+        "limits": "c",
+        "fractol.h": "c",
+        "move_camera.h": "c"
+    }
+}

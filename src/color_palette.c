@@ -13,6 +13,7 @@
 #include <math.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <limits.h>
 #include "../include/fractol.h"
 #include "../include/color_palette.h"
 #include "../include/color_algo.h"
@@ -29,22 +30,23 @@ uint32_t	get_rgba(int r, int g, int b, int a)
 void	*get_color_palette_function(int flag)
 {
 	if (flag == 0)
-		return (&grey_scale);
+		return (&red_delicious);
 	else if (flag == 1)
 		return (&wave);
 	else if (flag == 2)
-		return (&rainbow);
-	else if (flag == 3)
 		return (&awesome);
-	else
+	else if (flag == 3)
 		return (&monochrome);
+	else
+		return (&random_generated);
 }
 
 /*Due to this project forcing you into garbage ways, this function got made.
 This function pre compute every color palette in advance taking into 
 account the max_iteration that is currently set and store all color values
 in the heap to save performance*/
-t_color_palette	create_color_palette(const int iteration, int flag)
+//#define malloc(...) NULL
+t_color_palette	create_color_palette(unsigned int iteration, int flag)
 {
 	t_color_palette	palette;
 	char			**colors;

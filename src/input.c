@@ -18,33 +18,12 @@
 #include "../include/input.h"
 #include "../include/color_palette.h"
 
-/*Responsible to move the camera around with the arrow keys*/
-void	move_camera(t_param *param, double distance, char direction)
+void	move_camera(t_param *param, double xdelta, double ydelta, double zoom_level)
 {
-	t_complex	center;
-
-	center.r = param->config.max.r - param->config.min.r;
-	center.i = param->config.max.i - param->config.min.i;
-	if (direction == UP)
-	{
-		param->config.max.i += center.i * distance;
-		param->config.min.i += center.i * distance;
-	}
-	else if (direction == DOWN)
-	{
-		param->config.max.i -= center.i * distance;
-		param->config.min.i -= center.i * distance;
-	}
-	else if (direction == LEFT)
-	{
-		param->config.max.r += center.r * distance;
-		param->config.min.r += center.r * distance;
-	}
-	else if (direction == RIGHT)
-	{
-		param->config.max.r -= center.r * distance;
-		param->config.min.r -= center.r * distance;
-	}
+	param->config.max.i += ydelta * zoom_level;
+	param->config.min.i += ydelta * zoom_level;
+	param->config.max.r += xdelta * zoom_level;
+	param->config.min.r += xdelta * zoom_level;
 	update_image(param);
 }
 
@@ -54,7 +33,7 @@ void	iteration_modifier(t_param *param, int i)
 	param->config.iteration += i;
 	if (param->config.iteration < 1)
 		param->config.iteration = 1;
-	printf("%d\n", param->config.iteration);
+	printf("Iteration counter:%d\n", param->config.iteration);
 	free_color_palette(param->config.palette);
 	param->config.palette = create_color_palette(param->config.iteration,
 			param->config.current_coloring);
@@ -76,6 +55,7 @@ void	zoom(t_param *param, double zoom_new_value, double x, double y)
 	param->config.max.i = mouse.i + (param->config.max.i - mouse.i)
 		/ zoom_new_value;
 	update_image(param);
+	printf("Min:%f Max%f\n", param->config.min.i, param->config.max.i);
 }
 
 /*It's morbing time, responsible for changing the parameters in real time
@@ -91,9 +71,12 @@ void	morbing_julia(t_param *param)
 }
 
 /*Responsible for changing the color palette*/
-void	color_swap(t_param *param)
+void	color_swap(t_param *param, int flag)
 {
-	param->config.current_coloring = (param->config.current_coloring + 1) % 5;
+	if (flag == 0)
+		param->config.current_coloring = (param->config.current_coloring + 1) % 4;
+	else
+		param->config.current_coloring = 69;
 	free_color_palette(param->config.palette);
 	param->config.palette = create_color_palette(param->config.iteration,
 			param->config.current_coloring);

@@ -56,6 +56,6 @@ fclean: clean
 	$(REMOVE) $(NAME)
 	@echo "$(PURPLE)SO BAD $(YELLOW)LOL"
 re: fclean all
-	@echo "$(PURPLE)BAD"
+	@echo "$(PURPLE)zzz"
 
 .PHONY: all clean fclean re
