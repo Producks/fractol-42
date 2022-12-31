@@ -6,14 +6,14 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 14:38:08 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/30 06:13:29 by ddemers          ###   ########.fr       */
+/*   Updated: 2022/12/31 03:57:52 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef  MAIN_H
 # define MAIN_H
 
-# include "../libs/MLX42/MLX42.h"
+# include "../MLX42/include/MLX42/MLX42.h"
 # include "../include/complex.h"
 # include "../include/color_palette.h"
 # include "../include/update_image.h"

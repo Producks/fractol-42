@@ -22,10 +22,10 @@ MAC = libmlx42.a -I /include -lglfw -pthread -lm
 # REMOVE #
 REMOVE = rm -f
 # LIBS #
-MLX_PATH = ./libs/
-LIB_EXISTS = $(shell [ -f path/to/lib/build/libmylib.a ] && echo 1 || echo 0)
-CLONE = git clone https://github.com/codam-coding-college/MLX42.git
-MLX = libs/libmlx42.a
+CLONE = git clone https://github.com/codam-coding-college/MLX42.git;
+MLX = MLX42/libmlx42.a
+# RUN #
+RUN = ./fractol 0
 # OBJS #
 OBJS = ${SRC:.c=.o}
 # Source #
@@ -57,21 +57,35 @@ $(NAME): lib ${OBJS}
 	@echo "Version 1.01   \___)  \___)  \___) $(WHITE)"
 
 lib:
-	@if [ ! -d "libs" ]; then \
-		@echo "$(BLUE)Cloning MLX42..."
+	@if [ ! -d "MLX42" ]; then \
+		$(CLONE) \
 	fi
-	@echo "test"
+	@make -C MLX42
+
 all: lib $(NAME)
 
 clean:
+	@echo "⚠️$(RED)Cleaning .o⚠️$(WHITE)"
+	@sleep 1 > /dev/null
 	$(REMOVE) $(OBJS)
-	@echo "⚠️$(RED)DELETING ALL FILES FROM THE COMPUTER$(WHITE)⚠️"
+	@if [ -d "MLX42" ]; then \
+		make clean -C MLX42; \
+	fi
+	@echo "🎉$(GREEN)Cleaning done!$(WHITE)🎉"
 
 fclean: clean
+	@echo "$(RED)Removing files..."
+	@sleep 1 > /dev/null
 	$(REMOVE) $(NAME)
-	@echo "$(PURPLE)SO BAD $(YELLOW)LOL"
+	@echo "$(RED)Removing MLX Directory..."
+	@sleep 1 > /dev/null
+	@if [ -d "MLX42" ]; then \
+		rm -rf MLX42; \
+	fi
+	@echo "🎉$(GREEN)Cleaning done!$(WHITE)🎉"
 
 re: fclean all
 	@echo "$(PURPLE)Relink Successful! $(WHITE)"
-
-.PHONY: all clean fclean re
+run: $(NAME) 
+	$(RUN)
+.PHONY: all clean fclean re run lib
