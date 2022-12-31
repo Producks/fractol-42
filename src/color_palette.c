@@ -33,11 +33,11 @@ void	*get_color_palette_function(int flag)
 	if (flag == 0)
 		return (&red_delicious);
 	else if (flag == 1)
-		return (&wave);
-	else if (flag == 2)
 		return (&awesome);
+	else if (flag == 2)
+		return (&binary);
 	else if (flag == 3)
-		return (&monochrome);
+		return (&filter);
 	else
 		return (&random_generated);
 }

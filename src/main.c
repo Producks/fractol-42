@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 14:45:21 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/30 06:10:41 by ddemers          ###   ########.fr       */
+/*   Updated: 2022/12/31 01:50:51 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	init_fractal_config(t_fractal *config, t_param *param)
 	config->min.i = -2.0;
 	config->max.i = config->min.i + (config->max.r - config->min.r) * HEIGHT
 		/ WIDTH;
-	config->zoom_value = 0.0;
+	config->zoom_value = 1.0;
 	config->julia.r = 0.0;
 	config->julia.i = 0.0;
 	config->current_coloring = 0;
@@ -57,8 +57,6 @@ static void	get_function(int argc, char **argv, t_param *params)
 		params->function = &burningship_math;
 	else if (argv[1][0] == '3' && argv[1][1] == '\0')
 		params->function = &tricorn_math;
-	else if (argv[1][0] == '4' && argv[1][1] == '\0')
-		params->function = &newton_math;
 	else
 		arguments_error(2);
 }
@@ -70,11 +68,12 @@ static void	filter_init(t_param *param)
 	xpm_t	*xpm;
 	int32_t	error_check;
 
-	xpm = mlx_load_xpm42("./img/nebula.xpm42");
+	xpm = mlx_load_xpm42("./img/wtf.xpm42");
 	param->filter = mlx_texture_to_image(param->mlx, &xpm->texture);
 	mlx_delete_xpm42(xpm);
 	error_check = mlx_image_to_window(param->mlx, param->filter, 0, 0);
-	printf("%d\n", error_check);
+	if (error_check == -1)
+		failure(param, 1);
 }
 
 /*Responsible for printing the fractal on screen,
@@ -85,9 +84,17 @@ static void	fractal_init(t_param *param)
 
 	param->img = mlx_new_image(param->mlx, WIDTH, HEIGHT);
 	if (!param->img)
+	{
+		mlx_delete_image(param->mlx, param->filter);
 		failure(param, 1);
+	}
 	error_check = mlx_image_to_window(param->mlx, param->img, 0, 0);
-	printf("%d\n", error_check);
+	if (error_check == -1)
+	{
+		mlx_delete_image(param->mlx, param->filter);
+		mlx_delete_image(param->mlx, param->img);
+		failure(param, 1);
+	}
 	update_image(param);
 }
 
@@ -103,7 +110,10 @@ int	main(int argc, char **argv)
 	filter_init(&param);
 	fractal_init(&param);
 	loop(&param);
+	mlx_delete_image(param.mlx, param.filter);
+	mlx_delete_image(param.mlx, param.img);
 	mlx_terminate(param.mlx);
 	free_color_palette(param.config.palette);
+	printf("Buh Bye!\n");
 	return (0);
 }

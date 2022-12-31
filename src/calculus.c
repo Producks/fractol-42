@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 15:56:01 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/30 06:09:13 by ddemers          ###   ########.fr       */
+/*   Updated: 2022/12/31 01:50:16 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,15 +98,5 @@ unsigned int	tricorn_math(t_complex constant, t_fractal *config,
 		if (pow(val.i, 2) + pow(val.r, 2) > 4.0)
 			break ;
 	}
-	return (counter);
-}
-
-//f(z)=z3-1
-unsigned int	newton_math(t_complex constant, t_fractal *config,
-	unsigned int x, unsigned int y)
-{
-	unsigned int	counter;
-
-	counter = 0;
 	return (counter);
 }

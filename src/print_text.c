@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 23:44:09 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/30 06:11:12 by ddemers          ###   ########.fr       */
+/*   Updated: 2022/12/30 23:47:35 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	arguments_error(char flag)
 
 void	malloc_palette_error(t_param *param)
 {
-	perror("Malloc failed");
+	printf(RED "Error:Malloc Failed\n" WHITE);
 	mlx_close_window(param->mlx);
 	mlx_terminate(param->mlx);
 	exit(1);
@@ -49,22 +49,22 @@ that function. If we aren't, this bypass the restriction and we gain
 performance over using printf*/
 void	print_controls(void)
 {
-	printf(RED "\n");
+	printf(CYAN "\n");
 	printf(
 		" ***************************************************************\n"
 		" *           Here a list of the controls available             *\n"
 		" *Press H on the keyboard to see this menu show up again       *\n"
 		" *Press ESC on the keyboard to close the program               *\n"
-		" *Press + on the numpad to add +1 to the number iteration      *\n"
-		" *Press - on the numpad to lower -1 to the number of iteration *\n"
-		" *Press I on the keyboard to add +10 to the number of iter...  *\n"
-		" *Press L on the keyboard to lower +10 to the number of it...  *\n"
+		" *Press Q on the numpad to add +1 to the number iteration      *\n"
+		" *Press W on the numpad to lower -1 to the number of iteration *\n"
+		" *Press A on the keyboard to add +10 to the number of iter...  *\n"
+		" *Press S on the keyboard to lower +10 to the number of it...  *\n"
 		" *Press the arrow keys on the keyboard to move around          *\n"
 		" *Scroll the mouse wheel to zoom in or out where the cursor is *\n"
 		" *Scroll the mouse wheel to zoom to a specific location        *\n"
-		" *Press C on the keyboard to change color paletlete            *\n"
-		" *Press R on the keyboard to change to a randomly generated pal*\n"
-		" *Hold M while moving the mouse around to morb (Julia only)    *\n"
+		" *Press Z on the keyboard to change color paletlete            *\n"
+		" *Press X on the keyboard to change to a randomly generated pal*\n"
+		" *Hold C while moving the mouse around to morb (Julia only)    *\n"
 		" *Version 1.01 made by Ddemers@42                              *\n"
 		" ***************************************************************\n");
 	printf(WHITE "\n");
@@ -73,7 +73,11 @@ void	print_controls(void)
 void	failure(t_param *param, int flag)
 {
 	if (flag == 1)
+	{
+		free_color_palette(param->config.palette);
+		mlx_close_window(param->mlx);
 		mlx_terminate(param->mlx);
-	perror("MLX:");
+	}
+	printf(RED "Error:MLX FAILURE\n" WHITE);
 	exit(1);
 }

@@ -12,7 +12,6 @@
 
 #include <stddef.h>
 #include <stdio.h>
-#include "../libs/Libft/libft.h"
 #include "../include/main.h"
 #include "../include/update_image.h"
 #include "../include/input.h"
@@ -21,10 +20,12 @@
 void	move_camera(t_param *param, double xdelta, double ydelta,
 	double zoom_level)
 {
-	param->config.max.i += ydelta * zoom_level;
-	param->config.min.i += ydelta * zoom_level;
-	param->config.max.r += xdelta * zoom_level;
-	param->config.min.r += xdelta * zoom_level;
+	xdelta /= zoom_level;
+	ydelta /= zoom_level;
+	param->config.max.i += ydelta;
+	param->config.min.i += ydelta;
+	param->config.max.r += xdelta;
+	param->config.min.r += xdelta;
 	update_image(param);
 }
 
@@ -46,6 +47,7 @@ void	zoom(t_param *param, double zoom_new_value, double x, double y)
 {
 	t_complex	mouse;
 
+	param->config.zoom_value += zoom_new_value;
 	mouse = real_to_complex(x, y, param->config.min, param->config.max);
 	param->config.min.r = mouse.r - (mouse.r - param->config.min.r)
 		/ zoom_new_value;

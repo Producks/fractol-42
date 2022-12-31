@@ -15,12 +15,17 @@ NAME = fractol
 # Compile stuff #
 CC = gcc
 CFGLAGS = -Wall -Werror -Wextra
+# LINUX and WSL WINDOWS FLAG #
 LINUX = -ldl -lglfw -pthread -lm
+# MAC FLAG #
+MAC = libmlx42.a -I /include -lglfw -pthread -lm
 # REMOVE #
 REMOVE = rm -f
 # LIBS #
+MLX_PATH = ./libs/
+LIB_EXISTS = $(shell [ -f path/to/lib/build/libmylib.a ] && echo 1 || echo 0)
+CLONE = git clone https://github.com/codam-coding-college/MLX42.git
 MLX = libs/libmlx42.a
-LIBFT = libs/libft.a
 # OBJS #
 OBJS = ${SRC:.c=.o}
 # Source #
@@ -44,10 +49,20 @@ PURPLE = \033[0;35m
 CYAN = \033[0;36m
 WHITE = \033[0;37m
 
-$(NAME): ${OBJS}
-	${CC} $(CFGLAGS) $(OBJS) $(MLX) $(LIBFT) $(LINUX) -I /include -o ${NAME}
-	@echo "$(GREEN)Nothing broke"
-all:$(NAME)
+$(NAME): lib ${OBJS}
+	${CC} $(CFGLAGS) $(OBJS) $(MLX) $(LINUX) -I /include -o ${NAME}
+	@echo "🎉$(GREEN)Everything compiled!$(WHITE)🎉"
+	@echo "$(YELLOW)                  _      _      _"
+	@echo "By: Ddmers@42  __(.)< __(.)> __(.)="
+	@echo "Version 1.01   \___)  \___)  \___) $(WHITE)"
+
+lib:
+	@if [ ! -d "libs" ]; then \
+		@echo "$(BLUE)Cloning MLX42..."
+	fi
+	@echo "test"
+all: lib $(NAME)
+
 clean:
 	$(REMOVE) $(OBJS)
 	@echo "⚠️$(RED)DELETING ALL FILES FROM THE COMPUTER$(WHITE)⚠️"
@@ -55,7 +70,8 @@ clean:
 fclean: clean
 	$(REMOVE) $(NAME)
 	@echo "$(PURPLE)SO BAD $(YELLOW)LOL"
+
 re: fclean all
-	@echo "$(PURPLE)zzz"
+	@echo "$(PURPLE)Relink Successful! $(WHITE)"
 
 .PHONY: all clean fclean re

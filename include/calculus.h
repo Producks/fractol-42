@@ -23,7 +23,5 @@ unsigned int	tricorn_math(t_complex constant, t_fractal *config,
 					unsigned int x, unsigned int y);
 unsigned int	phoenix_math(t_complex constant, t_fractal *config,
 					unsigned int x, unsigned int y);
-unsigned int	newton_math(t_complex constant, t_fractal *config,
-					unsigned int x, unsigned int y);
 
 #endif
