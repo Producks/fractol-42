@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 14:45:21 by ddemers           #+#    #+#             */
-/*   Updated: 2023/01/02 08:10:37 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/01/02 17:37:52 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static void	get_function(int argc, char **argv, t_param *params)
 		{
 			params->config.julia.r = atod(argv[2]);
 			params->config.julia.i = atod(argv[3]);
+			params->morbing = true;
 			params->function = &julia_math;
 		}
 		else

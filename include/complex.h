@@ -20,6 +20,7 @@ typedef struct s_complex
 }	t_complex;
 
 t_complex	real_to_complex(int x, int y, t_complex min, t_complex max);
+t_complex	real_to_complex_julia(int x, int y, t_complex min, t_complex max);
 t_complex	complex_contructor(double x, double y);
 
 #endif

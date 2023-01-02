@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 15:56:01 by ddemers           #+#    #+#             */
-/*   Updated: 2023/01/02 07:52:25 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/01/02 17:31:35 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ unsigned int	julia_math(t_complex constant, t_fractal *config,
 	t_complex		val;
 
 	counter = -1;
-	val = real_to_complex(x, y, config->min, config->max);
+	val = real_to_complex_julia(x, y, config->min, config->max);
 	constant = complex_contructor(config->julia.r, config->julia.i);
 	while (++counter < config->iteration)
 	{
