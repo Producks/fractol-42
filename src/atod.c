@@ -6,11 +6,10 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 16:02:49 by ddemers           #+#    #+#             */
-/*   Updated: 2023/01/01 20:30:58 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/01/02 07:53:23 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/main.h"
 #include "../include/atod.h"
 
 static void	check_dot(const char *str, t_atod *atod)

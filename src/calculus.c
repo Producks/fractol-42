@@ -6,16 +6,12 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 15:56:01 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/31 01:50:16 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/01/02 07:52:25 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <complex.h>
 #include "../include/main.h"
-#include "../include/complex.h"
 #include "../include/complex_math.h"
 
 /*Formula: f(z) = z² + c

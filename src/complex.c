@@ -6,14 +6,11 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 14:41:49 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/30 06:09:29 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/01/02 07:42:16 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
 #include "../include/main.h"
-#include "../include/complex.h"
-#include "../include/complex_math.h"
 
 t_complex	real_to_complex(int x, int y, t_complex min, t_complex max)
 {

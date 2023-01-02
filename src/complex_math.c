@@ -12,7 +12,6 @@
 
 #include <math.h>
 #include "../include/complex.h"
-#include "../include/main.h"
 
 t_complex	addition_complex(t_complex a, t_complex b)
 {

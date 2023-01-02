@@ -10,12 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
 #include <stdio.h>
 #include "../include/main.h"
 #include "../include/update_image.h"
-#include "../include/input.h"
-#include "../include/color_palette.h"
 #include "../include/print_text.h"
 
 void	move_camera(t_param *param, double xdelta, double ydelta,
@@ -40,7 +37,11 @@ void	iteration_modifier(t_param *param, int i)
 	free_color_palette(param->config.palette);
 	if (create_color_palette(&param->config.palette, param->config.iteration,
 			param->config.current_coloring) == -1)
-		failure(param, 0);
+	{
+		mlx_delete_image(param->mlx, param->filter);
+		mlx_delete_image(param->mlx, param->img);
+		malloc_palette_error(param);
+	}
 	update_image(param);
 }
 
@@ -85,6 +86,10 @@ void	color_swap(t_param *param, int flag)
 	free_color_palette(param->config.palette);
 	if (create_color_palette(&param->config.palette, param->config.iteration,
 			param->config.current_coloring) == -1)
-		failure(param, 0);
+	{
+		mlx_delete_image(param->mlx, param->filter);
+		mlx_delete_image(param->mlx, param->img);
+		malloc_palette_error(param);
+	}
 	update_image(param);
 }

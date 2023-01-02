@@ -6,13 +6,12 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 21:18:16 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/30 06:09:44 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/01/02 07:36:21 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pthread.h>
 #include "../include/main.h"
-#include "../include/complex.h"
 
 void	*thread_function(void *arg)
 {

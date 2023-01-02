@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 23:44:09 by ddemers           #+#    #+#             */
-/*   Updated: 2023/01/01 15:43:30 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/01/02 08:05:53 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	arguments_error(char flag)
 		printf(RED "Error:Incorrect input\n" WHITE);
 	printf(
 		"You need to select a fractal\n"
-		"0 = Mandelbrot\n;"
+		"0 = Mandelbrot\n"
 		"1 = Julia\n"
 		"2 = Burning Ship\n"
 		"3 = Tricorn\n"
@@ -39,11 +39,12 @@ void	arguments_error(char flag)
 void	julia_arguments_errors(t_param *param)
 {
 	printf(
-		"Error:Not enough arguments\n"
+		RED "Error:Not enough arguments\n" WHITE
 		"You need to provide 2 extra arguments for the Julia set\n"
 		"3rd argument Real part\n"
 		"4th argument Imaginary part\n"
-		"Example:./fractal 1 0.0 0.0\n"
+		"Example:./fractal 1 0.3 0.6\n"
+		"If the inputs are incorrect, the values will be adjusted to 0.0\n"
 		"Exiting program\n");
 	exit (1);
 }
@@ -61,8 +62,8 @@ that function. If we aren't, this bypass the restriction and we gain
 performance over using printf*/
 void	print_controls(void)
 {
-	printf(CYAN "\n");
 	printf(
+		CYAN "\n"
 		" ***************************************************************\n"
 		" *           Here a list of the controls available             *\n"
 		" *Press H on the keyboard to see this menu show up again       *\n"
@@ -78,8 +79,8 @@ void	print_controls(void)
 		" *Press X on the keyboard to change to a randomly generated pal*\n"
 		" *Hold C while moving the mouse around to morb (Julia only)    *\n"
 		" *Version 1.01 made by Ddemers@42                              *\n"
-		" ***************************************************************\n");
-	printf(WHITE "\n");
+		" ***************************************************************\n"
+		WHITE "\n");
 }
 
 void	failure(t_param *param, int flag)

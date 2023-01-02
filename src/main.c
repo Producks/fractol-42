@@ -6,20 +6,15 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 14:45:21 by ddemers           #+#    #+#             */
-/*   Updated: 2023/01/01 20:31:09 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/01/02 08:10:37 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <stdio.h>
-#include <unistd.h>
 #include "../include/main.h"
 #include "../include/hooks.h"
-#include "../include/complex.h"
-#include "../include/input.h"
 #include "../include/print_text.h"
 #include "../include/calculus.h"
-#include "../include/color_palette.h"
 #include "../include/update_image.h"
 #include "../include/atod.h"
 
@@ -111,7 +106,7 @@ int	main(int argc, char **argv)
 	if (!param.mlx)
 		failure(&param, 0);
 	if (init_fractal_config(&param.config) == -1)
-		failure(&param, 0);
+		malloc_palette_error(&param);
 	filter_init(&param);
 	fractal_init(&param);
 	loop(&param);

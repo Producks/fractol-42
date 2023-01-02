@@ -6,11 +6,10 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 23:32:15 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/31 01:43:54 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/01/02 07:41:12 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "../include/main.h"
 #include "../include/input.h"
 #include "../include/print_text.h"

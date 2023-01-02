@@ -11,9 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdint.h>
-#include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 #include "../include/color_palette.h"
 
 uint32_t	red_delicious(int iteration, int max_iteration)
