@@ -46,23 +46,23 @@ void	*get_color_palette_function(int flag)
 This function pre compute every color palette in advance taking into 
 account the max_iteration that is currently set and store all color values
 in the heap to save performance*/
-//#define malloc(...) NULL
-//#define malloc(...) NULL
-t_color_palette	create_color_palette(unsigned int iteration,
-	int flag, t_param *param)
+int	create_color_palette(t_color_palette *palette,
+	unsigned int iteration, int flag)
 {
-	t_color_palette	palette;
 	char			**colors;
 	unsigned int	index;
 
 	index = -1;
-	palette.colors = (uint32_t *)malloc((iteration + 1) * sizeof(uint32_t));
-	if (!palette.colors)
-		malloc_palette_error(param);
-	palette.color_palette_func = get_color_palette_function(flag);
+	palette->colors = (uint32_t *)malloc((iteration + 1) * sizeof(uint32_t));
+	if (!palette->colors)
+	{
+		puts("malloc");
+		return (-1);
+	}
+	palette->color_palette_func = get_color_palette_function(flag);
 	while (++index <= iteration)
-		palette.colors[index] = palette.color_palette_func(index, iteration);
-	return (palette);
+		palette->colors[index] = palette->color_palette_func(index, iteration);
+	return (0);
 }
 
 void	free_color_palette(t_color_palette palette)

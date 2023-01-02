@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 23:46:35 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/30 05:24:00 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/01/01 15:41:46 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define WHITE "\033[0;37m"
 
 void	arguments_error(char flag);
+void	julia_arguments_errors(t_param *param);
 void	malloc_palette_error(t_param *param);
 void	print_controls(void);
 void	failure(t_param *param, int flag);

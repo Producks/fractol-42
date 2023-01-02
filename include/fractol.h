@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update_image.h                                     :+:      :+:    :+:   */
+/*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/27 21:20:28 by ddemers           #+#    #+#             */
-/*   Updated: 2023/01/01 14:35:32 by ddemers          ###   ########.fr       */
+/*   Created: 2023/01/01 14:07:27 by ddemers           #+#    #+#             */
+/*   Updated: 2023/01/01 14:07:43 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UPDATE_IMAGE_H
-# define UPDATE_IMAGE_H
-# include "main.h"
+#ifndef FRACTOL_H
+# define FRACTOL_H
 
-void	update_image(t_param *param);
+typedef struct s_fractal
+{
+	t_color_palette		palette;
+	int					iteration;
+	t_complex			min;
+	t_complex			max;
+	double				zoom_value;
+	unsigned int		current_coloring;
+	t_complex			delta;
+	t_complex			julia;
+}	t_fractal;
 
 #endif

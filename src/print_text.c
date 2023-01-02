@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 23:44:09 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/30 23:47:35 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/01/01 15:43:30 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,18 @@ void	arguments_error(char flag)
 		"Example:./fractol 0\n"
 		"Exiting program\n");
 	exit(1);
+}
+
+void	julia_arguments_errors(t_param *param)
+{
+	printf(
+		"Error:Not enough arguments\n"
+		"You need to provide 2 extra arguments for the Julia set\n"
+		"3rd argument Real part\n"
+		"4th argument Imaginary part\n"
+		"Example:./fractal 1 0.0 0.0\n"
+		"Exiting program\n");
+	exit (1);
 }
 
 void	malloc_palette_error(t_param *param)

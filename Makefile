@@ -28,6 +28,8 @@ MLX = MLX42/libmlx42.a
 RUN = ./fractol 0
 # OBJS #
 OBJS = ${SRC:.c=.o}
+# OS CHECK #
+OS = $(shell uname)
 # Source #
 SRC = 	./src/calculus.c \
 		./src/color_palette.c \
@@ -37,6 +39,7 @@ SRC = 	./src/calculus.c \
 		./src/input.c \
 		./src/hooks.c \
 		./src/print_text.c \
+		./src/atod.c \
 		./src/update_image.c \
 		./src/main.c
 # Colors #
@@ -49,8 +52,15 @@ PURPLE = \033[0;35m
 CYAN = \033[0;36m
 WHITE = \033[0;37m
 
+#CHECK WHICH OS IS RUNNING TO GET THE CORRECT COMPILATION FLAG #
+ifeq ($(OS), Linux)
+	FLAGS = -ldl -lglfw -pthread -lm
+else ifeq ($(OS), Darwin)
+	FLAGS = libmlx42.a -I /include -lglfw -pthread -lm
+endif
+
 $(NAME): lib ${OBJS}
-	${CC} $(CFGLAGS) $(OBJS) $(MLX) $(LINUX) -I /include -o ${NAME}
+	${CC} $(CFGLAGS) $(OBJS) $(MLX) $(FLAGS) -I /include -o ${NAME}
 	@echo "🎉$(GREEN)Everything compiled!$(WHITE)🎉"
 	@echo "$(YELLOW)                  _      _      _"
 	@echo "By: Ddmers@42  __(.)< __(.)> __(.)="
@@ -62,7 +72,7 @@ lib:
 	fi
 	@make -C MLX42
 
-all: lib $(NAME)
+all: $(NAME)
 
 clean:
 	@echo "⚠️$(RED)Cleaning .o⚠️$(WHITE)"

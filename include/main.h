@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 14:38:08 by ddemers           #+#    #+#             */
-/*   Updated: 2022/12/31 03:57:52 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/01/01 14:10:03 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,11 @@
 # define MAIN_H
 
 # include "../MLX42/include/MLX42/MLX42.h"
-# include "../include/complex.h"
-# include "../include/color_palette.h"
-# include "../include/update_image.h"
+# include "complex.h"
 # include "color_palette.h"
+# include "fractol.h"
 # define WIDTH 750
 # define HEIGHT 750	
-
-typedef struct s_fractal
-{
-	t_color_palette		palette;
-	int					iteration;
-	t_complex			min;
-	t_complex			max;
-	double				zoom_value;
-	unsigned int		current_coloring;
-	t_complex			delta;
-	t_complex			julia;
-}	t_fractal;
 
 typedef struct s_param
 {

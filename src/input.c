@@ -16,6 +16,7 @@
 #include "../include/update_image.h"
 #include "../include/input.h"
 #include "../include/color_palette.h"
+#include "../include/print_text.h"
 
 void	move_camera(t_param *param, double xdelta, double ydelta,
 	double zoom_level)
@@ -37,8 +38,9 @@ void	iteration_modifier(t_param *param, int i)
 		param->config.iteration = 1;
 	printf("Iteration counter:%d\n", param->config.iteration);
 	free_color_palette(param->config.palette);
-	param->config.palette = create_color_palette(param->config.iteration,
-			param->config.current_coloring, param);
+	if (create_color_palette(&param->config.palette, param->config.iteration,
+			param->config.current_coloring) == -1)
+		failure(param, 0);
 	update_image(param);
 }
 
@@ -81,7 +83,8 @@ void	color_swap(t_param *param, int flag)
 	else
 		param->config.current_coloring = 69;
 	free_color_palette(param->config.palette);
-	param->config.palette = create_color_palette(param->config.iteration,
-			param->config.current_coloring, param);
+	if (create_color_palette(&param->config.palette, param->config.iteration,
+			param->config.current_coloring) == -1)
+		failure(param, 0);
 	update_image(param);
 }
