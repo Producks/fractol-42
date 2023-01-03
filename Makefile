@@ -18,7 +18,7 @@ CFGLAGS = -Wall -Werror -Wextra
 # LINUX and WSL WINDOWS FLAG #
 LINUX = -ldl -lglfw -pthread -lm
 # MAC FLAG #
-MAC = libmlx42.a -I /include -lglfw -pthread -lm
+MAC = -I /include -lglfw -pthread -L "/Users/$(USER)/.brew/opt/glfw/lib/"
 # REMOVE #
 REMOVE = rm -f
 # LIBS #
@@ -54,13 +54,14 @@ WHITE = \033[0;37m
 
 #CHECK WHICH OS IS RUNNING TO GET THE CORRECT COMPILATION FLAG #
 ifeq ($(OS), Linux)
-	FLAGS = -ldl -lglfw -pthread -lm
+	FLAGS = $(LINUX)
 else ifeq ($(OS), Darwin)
-	FLAGS = libmlx42.a -I /include -lglfw -pthread -lm
+	FLAGS = $(MAC)
+
 endif
 
 $(NAME): lib ${OBJS}
-	${CC} $(CFGLAGS) $(OBJS) $(MLX) $(FLAGS) -I /include -o ${NAME}
+	${CC} $(CFGLAGS) $(OBJS) $(MLX) $(FLAGS) -o ${NAME}
 	@echo "🎉$(GREEN)Everything compiled!$(WHITE)🎉"
 	@echo "$(YELLOW)                  _      _      _"
 	@echo "By: Ddmers@42  __(.)< __(.)> __(.)="
@@ -75,7 +76,7 @@ lib:
 all: $(NAME)
 
 clean:
-	@echo "⚠️$(RED)Cleaning .o⚠️$(WHITE)"
+	@echo "$(RED)💥Cleaning .o💥$(WHITE)"
 	@sleep 1 > /dev/null
 	$(REMOVE) $(OBJS)
 	@if [ -d "MLX42" ]; then \
@@ -84,10 +85,10 @@ clean:
 	@echo "🎉$(GREEN)Cleaning done!$(WHITE)🎉"
 
 fclean: clean
-	@echo "$(RED)Removing files..."
+	@echo "$(RED)💥Removing files...💥"
 	@sleep 1 > /dev/null
 	$(REMOVE) $(NAME)
-	@echo "$(RED)Removing MLX Directory..."
+	@echo "$(RED)💥Removing MLX Directory...💥"
 	@sleep 1 > /dev/null
 	@if [ -d "MLX42" ]; then \
 		rm -rf MLX42; \
