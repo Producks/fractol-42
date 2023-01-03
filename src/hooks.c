@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 23:32:15 by ddemers           #+#    #+#             */
-/*   Updated: 2023/01/02 07:41:12 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/01/03 03:21:15 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "../include/input.h"
 #include "../include/print_text.h"
 
+/*Check for key presses*/
 void	loop_hook2(void *params)
 {
 	t_param	*param;

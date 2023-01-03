@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 16:02:49 by ddemers           #+#    #+#             */
-/*   Updated: 2023/01/02 17:06:13 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/01/03 03:28:11 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ static void	check_spaces(const char *str, t_atod *atod)
 		atod->i++;
 }
 
+/*Responsible for the arguments of the Julia set, turn the arguments into
+doubles. Pretty similar to atoi but for doubles*/
 double	atod(const char *str)
 {
 	t_atod	atod;

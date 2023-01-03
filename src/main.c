@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 14:45:21 by ddemers           #+#    #+#             */
-/*   Updated: 2023/01/02 17:37:52 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/01/03 04:12:53 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ int	main(int argc, char **argv)
 		malloc_palette_error(&param);
 	filter_init(&param);
 	fractal_init(&param);
+	printf(GREEN "You can press H for a list of the controls\n" WHITE);
 	loop(&param);
 	mlx_delete_image(param.mlx, param.filter);
 	mlx_delete_image(param.mlx, param.img);

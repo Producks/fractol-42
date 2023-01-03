@@ -7,3 +7,8 @@
 * Mandatory parts ✔️  
 * Bonus ⚠️
 * Only smooth coloring is missing ❌
+# How to run
+* Just type make on linux or mac, the makefile will clone the MLX42
+* You do need to install GLFW in order to run it
+* Everything else will be explained when you run the executable
+![](https://i.imgur.com/jCuazk7.png)

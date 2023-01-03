@@ -14,6 +14,10 @@
 #include <stdlib.h>
 #include "../include/color_palette.h"
 
+/*Responsible for colors. Fraction last number should always be 1.0
+Example: fraction = 0.1
+blue = 255 * (1 - 2 * 0.1) 
+255 * 0.8 = 204*/
 uint32_t	red_delicious(int iteration, int max_iteration)
 {
 	double	fraction;
@@ -39,6 +43,8 @@ uint32_t	red_delicious(int iteration, int max_iteration)
 	return (get_rgba(red, green, blue, 255));
 }
 
+/*Binary coloring, result are always 0 or 1 and colors will
+either be white or black*/
 uint32_t	binary(int iteration, unsigned int max_iteration)
 {
 	int	gray_level;
@@ -47,6 +53,8 @@ uint32_t	binary(int iteration, unsigned int max_iteration)
 	return (get_rgba(gray_level, gray_level, gray_level, 0xFF));
 }
 
+/*Similar to first function, just a different way to do it
+with the if*/
 uint32_t	awesome(int iteration, unsigned int max_iteration)
 {
 	double	fraction;
@@ -74,6 +82,8 @@ uint32_t	awesome(int iteration, unsigned int max_iteration)
 		return (get_rgba(0x00, 0x00, 0x00, 255));
 }
 
+/*Similar to first function, just with a different alpha level
+for the background filter*/
 uint32_t	filter(int iteration, unsigned int max_iteration)
 {
 	double	fraction;
@@ -102,6 +112,7 @@ uint32_t	filter(int iteration, unsigned int max_iteration)
 	return (get_rgba(red, green, blue, alpha));
 }
 
+/*Rand function get us a random number to generate the palette*/
 uint32_t	random_generated(int iteration, unsigned int max_iteration)
 {
 	double	fraction;

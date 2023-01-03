@@ -22,6 +22,7 @@ uint32_t	get_rgba(int r, int g, int b, int a)
 	return (r << 24 | g << 16 | b << 8 | a);
 }
 
+/*Read the function name*/
 void	*get_color_palette_function(int flag)
 {
 	if (flag == 0)
@@ -57,6 +58,7 @@ int	create_color_palette(t_color_palette *palette,
 	return (0);
 }
 
+/*Free the color palette buffer we created*/
 void	free_color_palette(t_color_palette palette)
 {
 	if (!palette.colors)

@@ -6,13 +6,17 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 21:18:16 by ddemers           #+#    #+#             */
-/*   Updated: 2023/01/02 07:36:21 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/01/03 03:23:46 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pthread.h>
 #include "../include/main.h"
 
+/*Magic happens here! Convert pixel to a complex plane, then runs the algo
+until it either explode or hit max_iteration. Then update the pixel on the
+screen. Since colors are pre computed before this function, we get to save
+resources*/
 void	*thread_function(void *arg)
 {
 	t_param			*param;

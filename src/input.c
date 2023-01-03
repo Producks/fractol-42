@@ -15,6 +15,8 @@
 #include "../include/update_image.h"
 #include "../include/print_text.h"
 
+/*Responsible to move the camera around when feeding values to it,
+also take into account the zoom level so it's smoother*/
 void	move_camera(t_param *param, double xdelta, double ydelta,
 	double zoom_level)
 {

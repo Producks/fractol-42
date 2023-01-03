@@ -13,6 +13,7 @@
 #include <math.h>
 #include "../include/complex.h"
 
+/*Responsible to add complex numbers together*/
 t_complex	addition_complex(t_complex a, t_complex b)
 {
 	t_complex	result;
@@ -22,6 +23,7 @@ t_complex	addition_complex(t_complex a, t_complex b)
 	return (result);
 }
 
+/*Responsible to subtract complex numbers together*/
 t_complex	subtraction_complex(t_complex a, t_complex b)
 {
 	t_complex	result;
@@ -31,6 +33,7 @@ t_complex	subtraction_complex(t_complex a, t_complex b)
 	return (result);
 }
 
+/*Responsible to multiply complex numbers together*/
 t_complex	multiplication_complex(t_complex a, t_complex b)
 {
 	t_complex	result;
@@ -40,6 +43,7 @@ t_complex	multiplication_complex(t_complex a, t_complex b)
 	return (result);
 }
 
+/*Responsible to absolute complex numbers, used for burning ship only*/
 t_complex	absolute_complex(t_complex val)
 {
 	val.r = fabsl(val.r);

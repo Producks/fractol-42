@@ -6,7 +6,7 @@
 /*   By: ddemers <ddemers@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 23:44:09 by ddemers           #+#    #+#             */
-/*   Updated: 2023/01/02 08:05:53 by ddemers          ###   ########.fr       */
+/*   Updated: 2023/01/03 04:12:20 by ddemers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	arguments_error(char flag)
 	exit(1);
 }
 
+/*Print the text if the input for julia is incorrect*/
 void	julia_arguments_errors(t_param *param)
 {
 	printf(
@@ -49,6 +50,7 @@ void	julia_arguments_errors(t_param *param)
 	exit (1);
 }
 
+/*Text and error handling incase malloc fail for collor palette*/
 void	malloc_palette_error(t_param *param)
 {
 	printf(RED "Error:Malloc Failed\n" WHITE);
@@ -83,6 +85,7 @@ void	print_controls(void)
 		WHITE "\n");
 }
 
+/*Incase the MLX fail*/
 void	failure(t_param *param, int flag)
 {
 	if (flag == 1)
