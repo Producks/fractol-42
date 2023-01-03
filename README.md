@@ -11,4 +11,4 @@
 * Just type make on linux or mac, the makefile will clone the MLX42
 * You do need to install GLFW in order to run it
 * Everything else will be explained when you run the executable
-![](https://imgur.com/a/5gAoh8h)
+![](https://i.imgur.com/R4VQmpm.png)
